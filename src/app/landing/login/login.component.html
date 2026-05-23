@@ -1,0 +1,66 @@
+<div class="login-container">
+  <div class="overlay">
+    <h1>{{ isLogin ? 'Welcome Back' : 'Join the Sanctuary' }}</h1>
+    <p>{{ isLogin ? 'Log in to continue your journey.' : 'Create an account to capture peaceful moments.' }}</p>
+    <div class="auth-tabs">
+      <button class="tab-button" [class.active]="isLogin" (click)="setMode('login')" aria-label="Switch to login">Log In</button>
+      <button class="tab-button" [class.active]="!isLogin" (click)="setMode('signup')" aria-label="Switch to signup">Sign Up</button>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="login-form">
+      <!-- Username: shown in both login and signup -->
+      <label>
+        {{ isLogin ? 'Username' : 'Name' }}
+        <input type="text" formControlName="username" [placeholder]="isLogin ? 'Your username' : 'Your full name'" aria-label="Username" aria-required="true">
+        <small *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid" class="error">
+          {{ isLogin ? 'Username' : 'Name' }} is required (min 3 characters).
+        </small>
+      </label>
+      <!-- Email: only shown during signup -->
+      <label *ngIf="!isLogin">
+        Email
+        <input type="email" formControlName="email" placeholder="you@example.com" aria-label="Email address" aria-required="true">
+        <small *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+          Enter a valid email address.
+        </small>
+      </label>
+      <label>
+        Password
+        <input type="password" formControlName="password" placeholder="Password (min 6 chars)" aria-label="Password" aria-required="true">
+        <small *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+          Password must be at least 6 characters.
+        </small>
+      </label>
+      <label *ngIf="!isLogin">
+        Confirm Password
+        <input type="password" formControlName="confirmPassword" placeholder="Confirm password" aria-label="Confirm password" aria-required="true">
+        <small *ngIf="loginForm.hasError('mismatch') && loginForm.get('confirmPassword')?.touched" class="error">
+          Passwords do not match.
+        </small>
+      </label>
+      <small *ngIf="errorMessage" class="error server-error">{{ errorMessage }}</small>
+      <button type="submit" [disabled]="loginForm.invalid" class="submit-button" [attr.aria-label]="isLogin ? 'Log in to the Sanctuary' : 'Sign up for the Sanctuary'">
+        {{ isLogin ? 'Log In' : 'Sign Up' }}
+      </button>
+    </form>
+    <div class="social-login">
+      <p>Or continue with:</p>
+      <div class="social-buttons">
+        <button class="social-button google-button" (click)="signupWithGoogle()" aria-label="Sign in with Google">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google icon"> Google
+        </button>
+      </div>
+    </div>
+    <p class="alternate-link">
+      {{ isLogin ? 'Need an account?' : 'Already have an account?' }}
+      <a (click)="setMode(isLogin ? 'signup' : 'login')" [attr.aria-label]="isLogin ? 'Switch to sign up' : 'Switch to log in'">
+        {{ isLogin ? 'Sign Up' : 'Log In' }}
+      </a>
+    </p>
+  </div>
+  <div class="floating-orbs">
+    <span class="orb orb1"></span>
+    <span class="orb orb2"></span>
+    <span class="orb orb3"></span>
+    <span class="orb orb4"></span>
+  </div>
+</div>

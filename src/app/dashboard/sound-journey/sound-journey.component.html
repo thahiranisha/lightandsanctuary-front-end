@@ -1,0 +1,67 @@
+<div class="sound-journey-wrapper">
+  <header class="sound-header">
+    <h1>Sound Journey</h1>
+    <p>Immerse yourself in relaxing soundscapes</p>
+  </header>
+
+  <!-- Categories -->
+  <section class="categories">
+    <button *ngFor="let category of ['Nature', 'Water', 'Sleep', 'Binaural', 'Forest']">{{ category }}</button>
+  </section>
+
+  <!-- Sound Cards -->
+  <section class="sound-grid">
+    <div class="sound-card" *ngFor="let sound of soundList">
+      <img [src]="sound.image" alt="{{ sound.title }}">
+      <h3>{{ sound.title }}</h3>
+      <p>{{ sound.category }}</p>
+      <audio controls [src]="sound.audio"></audio>
+      <div class="actions">
+        <button>❤️ Favorite</button>
+        <button>➕ Add to Playlist</button>
+        <button>🕒 Set Timer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Now Playing -->
+  <section class="now-playing" *ngIf="nowPlaying">
+    <h4>Now Playing</h4>
+    <p>{{ nowPlaying.title }}</p>
+    <audio controls [src]="nowPlaying.audio" autoplay></audio>
+  </section>
+
+  <!-- Recently Played -->
+  <section class="recently-played">
+    <h4>Recently Played</h4>
+    <ul>
+      <li *ngFor="let item of recentList">{{ item.title }}</li>
+    </ul>
+  </section>
+
+  <!-- Mood Tracker -->
+  <section class="mood-tracker">
+    <h4>Mood Before</h4>
+    <select>
+      <option>Relaxed</option>
+      <option>Anxious</option>
+      <option>Focused</option>
+      <option>Sad</option>
+    </select>
+
+    <h4>Mood After</h4>
+    <select>
+      <option>Relaxed</option>
+      <option>Uplifted</option>
+      <option>Sleepy</option>
+      <option>Happy</option>
+    </select>
+  </section>
+
+  <!-- Affirmations -->
+  <section class="affirmation">
+    <blockquote>
+      "You are safe, you are calm, and you are in control."
+    </blockquote>
+  </section>
+</div>

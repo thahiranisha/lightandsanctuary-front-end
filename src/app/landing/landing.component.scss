@@ -1,0 +1,218 @@
+// Variables for reusable values
+$primary-text-color: #ffffff;
+$secondary-text-color: #e0e0e0;
+$overlay-bg: rgba(0, 0, 0, 0.45);
+$button-bg: rgba(255, 255, 255, 0.2);
+$button-bg-hover: rgba(255, 255, 255, 0.4);
+$button-border: 1px solid #fff;
+$orb-bg: rgba(255, 255, 255, 0.2);
+
+// Reset default margins and ensure full-screen layout
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; // Disable scrollbars
+  -webkit-overflow-scrolling: touch; // Smooth scrolling for mobile
+}
+
+// Ensure Angular app root fills the screen
+app-root {
+  display: block;
+  height: 100%; // Use percentage to inherit from body
+  width: 100%;
+  overflow: hidden;
+}
+
+// Full-screen landing container with background image
+.landing-container {
+  height: 100%; // Inherit from parent (html/body)
+  width: 100%;
+  overflow: hidden;
+  background: {
+    image: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920");
+    repeat: no-repeat;
+    position: center;
+    size: cover; // Ensures image covers viewport without distortion
+    attachment: fixed; // Prevents image scrolling
+  }
+  position: fixed; // Locks container to viewport
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+
+  // Overlay for text and buttons
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: $overlay-bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+
+    // Typography
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: $primary-text-color;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: $secondary-text-color;
+    }
+
+    // Button group for layout
+    .button-group {
+      display: flex;
+      gap: 1rem; // Space between buttons
+
+      // Call-to-action button
+      .cta-button {
+        background-color: $button-bg;
+        border: $button-border;
+        color: $primary-text-color;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none; // For routerLink
+
+        &:hover {
+          background-color: $button-bg-hover;
+        }
+      }
+
+      // Signup button (matching cta-button style)
+      .signup-button {
+        background-color: $button-bg;
+        border: $button-border;
+        color: $primary-text-color;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        text-decoration: none; // For routerLink
+
+        &:hover {
+          background-color: $button-bg-hover;
+        }
+      }
+    }
+  }
+
+  // Floating orbs container
+  .floating-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+
+    // Orb styling
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: $orb-bg;
+      animation: float 8s infinite ease-in-out;
+
+      &.orb1 {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 30%;
+        animation-delay: 0s;
+      }
+
+      &.orb2 {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 70%;
+        animation-delay: 2s;
+      }
+
+      &.orb3 {
+        width: 60px;
+        height: 60px;
+        top: 70%;
+        left: 40%;
+        animation-delay: 4s;
+      }
+
+      &.orb4 {
+        width: 90px;
+        height: 90px;
+        top: 35%;
+        left: 15%;
+        animation-delay: 6s;
+      }
+    }
+  }
+}
+
+// Floating animation
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .landing-container {
+    .overlay {
+      padding: 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .button-group {
+        flex-direction: column; // Stack buttons on small screens
+        gap: 0.5rem;
+
+        .cta-button,
+        .signup-button {
+          padding: 0.6rem 1.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .floating-orbs {
+      .orb {
+        &.orb1,
+        &.orb2,
+        &.orb3,
+        &.orb4 {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

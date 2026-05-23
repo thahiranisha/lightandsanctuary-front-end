@@ -1,0 +1,127 @@
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside [ngClass]="{ 'collapsed': isCollapsed }" class="sidebar">
+    <button class="toggle-sidebar-btn" (click)="toggleSidebar()">
+      ☰
+    </button>
+    <br>
+    <br>
+    <ul>
+      <li routerLink="/dashboard">
+        <span class="icon">🏠</span>
+        <span *ngIf="!isCollapsed">Dashboard</span>
+      </li>
+      <li routerLink="/sound-journey">
+        <span class="icon">🎵</span>
+        <span *ngIf="!isCollapsed">Sound Journey</span>
+      </li>
+      <li routerLink="/meditation-timer">
+        <span class="icon">⏱️</span>
+        <span *ngIf="!isCollapsed">Meditation Timer</span>
+      </li>
+      <li routerLink="/journal">
+        <span class="icon">📓</span>
+        <span *ngIf="!isCollapsed">Journal</span>
+      </li>
+      <li routerLink="/mood-tracker">
+        <span class="icon">🙂</span>
+        <span *ngIf="!isCollapsed">Mood Tracker</span>
+      </li>
+      <li routerLink="/affirmation">
+        <span class="icon">💬</span>
+        <span *ngIf="!isCollapsed">Daily Affirmation</span>
+      </li>
+      <li routerLink="/stats">
+        <span class="icon">📊</span>
+        <span *ngIf="!isCollapsed">Mindfulness Stats</span>
+      </li>
+      <li routerLink="/favorites">
+        <span class="icon">⭐</span>
+        <span *ngIf="!isCollapsed">Favorites</span>
+      </li>
+      <li routerLink="/settings">
+        <span class="icon">⚙️</span>
+        <span *ngIf="!isCollapsed">Settings</span>
+      </li>
+<!--      <li (click)="logout()">-->
+<!--        <span class="icon">📕</span>-->
+<!--        <span *ngIf="!isCollapsed">Logout</span>-->
+<!--      </li>-->
+    </ul>
+  </aside>
+
+
+  <!-- Main Content -->
+  <div class="dashboard-wrapper">
+    <header class="dashboard-header">
+      <div>
+        <h1>Welcome back, {{ username }}</h1>
+        <p>Find your moments of tranquillity</p>
+      </div>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </header>
+
+    <section class="widget-section">
+      <div class="widget">
+        <h4>Meditation Summary</h4>
+        <p>3 sessions this week</p>
+        <span>45 minutes total</span>
+      </div>
+      <div class="widget">
+        <h4>Now Playing</h4>
+        <p>“Ocean Waves” Soundscape</p>
+        <span>Time left: 08:15</span>
+      </div>
+      <div class="widget">
+        <h4>Weekly Goal</h4>
+        <p>Meditate for 60 minutes</p>
+        <span>75% complete</span>
+      </div>
+      <div class="widget">
+        <h4>Mindfulness Score</h4>
+        <p>87/100</p>
+        <span>Based on last 7 days</span>
+      </div>
+    </section>
+
+    <div class="card-grid">
+      <div class="dashboard-card" routerLink="/sound-journey">
+        <i class="icon material-icons">music_note</i>
+        <h2>Sound Journey</h2>
+        <p>Explore soothing soundscapes</p>
+      </div>
+
+      <div class="dashboard-card" routerLink="/meditation-timer">
+        <i class="icon material-icons">schedule</i>
+        <h2>Meditation Timer</h2>
+        <p>Set a timer for your sessions</p>
+      </div>
+
+      <div class="dashboard-card" routerLink="/journal">
+        <i class="icon material-icons">menu_book</i>
+        <h2>Journal</h2>
+        <p>Reflect on your thoughts</p>
+      </div>
+
+      <div class="dashboard-card" routerLink="/sanctuary-map">
+        <i class="icon material-icons">map</i>
+        <h2>Sanctuary Map</h2>
+        <p>Discover peaceful locations</p>
+      </div>
+    </div>
+
+    <div class="journal-section">
+      <h3>Your Journal</h3>
+      <textarea placeholder="Write your thoughts, reflections, or affirmations here..."></textarea>
+      <button (click)="saveJournalEntry()">Save Entry</button>
+    </div>
+
+    <div class="recent-activity">
+      <h3>Recent Activity</h3>
+      <ul>
+        <li><strong>Today:</strong> Completed a 15-minute meditation session</li>
+        <li><strong>May 25:</strong> Listened to “Ocean Waves” soundscape</li>
+      </ul>
+    </div>
+  </div>
+</div>

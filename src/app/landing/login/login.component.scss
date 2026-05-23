@@ -1,0 +1,328 @@
+$primary-text-color: #ffffff;
+$secondary-text-color: #e0e0e0;
+$overlay-bg: rgba(0, 0, 0, 0.45);
+$button-bg: rgba(255, 255, 255, 0.2);
+$button-bg-hover: rgba(255, 255, 255, 0.4);
+$button-border: 1px solid #fff;
+$orb-bg: rgba(255, 255, 255, 0.2);
+$error-color: #ff6b6b;
+
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: {
+    image: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920");
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+    attachment: fixed;
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: $overlay-bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $primary-text-color;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: $secondary-text-color;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+
+      .tab-button {
+        background: $button-bg;
+        border: $button-border;
+        color: $primary-text-color;
+        padding: 0.6rem 1.5rem;
+        border-radius: 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &.active {
+          background: $button-bg-hover;
+        }
+
+        &:hover {
+          background: $button-bg-hover;
+        }
+      }
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+      gap: 1rem;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        color: $primary-text-color;
+        font-size: 0.9rem;
+
+        input {
+          margin-top: 0.3rem;
+          padding: 0.8rem;
+          border: $button-border;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          color: $primary-text-color;
+          font-size: 1rem;
+          outline: none;
+
+          &::placeholder {
+            color: $secondary-text-color;
+          }
+
+          &:focus {
+            border-color: $button-bg-hover;
+          }
+        }
+
+        .error {
+          color: $error-color;
+          font-size: 0.8rem;
+          margin-top: 0.2rem;
+        }
+      }
+
+      .server-error {
+        color: $error-color;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .submit-button {
+        background: $button-bg;
+        border: $button-border;
+        color: $primary-text-color;
+        padding: 0.8rem;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: $button-bg-hover;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .social-login {
+      margin-top: 1.5rem;
+
+      p {
+        font-size: 1rem;
+        color: $secondary-text-color;
+        margin-bottom: 1rem;
+      }
+
+      .social-buttons {
+        display: flex;
+        gap: 1rem;
+
+        .social-button {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: $button-bg;
+          border: $button-border;
+          color: $primary-text-color;
+          padding: 0.6rem 1.5rem;
+          border-radius: 20px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: background 0.3s ease;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+
+          &:hover {
+            background: $button-bg-hover;
+          }
+        }
+      }
+    }
+
+    .alternate-link {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: $secondary-text-color;
+
+      a {
+        color: $primary-text-color;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover {
+          color: $button-bg-hover;
+        }
+      }
+    }
+  }
+
+  .floating-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: $orb-bg;
+      animation: float 8s infinite ease-in-out;
+
+      &.orb1 {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        left: 30%;
+        animation-delay: 0s;
+      }
+
+      &.orb2 {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 70%;
+        animation-delay: 2s;
+      }
+
+      &.orb3 {
+        width: 60px;
+        height: 60px;
+        top: 70%;
+        left: 40%;
+        animation-delay: 4s;
+      }
+
+      &.orb4 {
+        width: 90px;
+        height: 90px;
+        top: 35%;
+        left: 15%;
+        animation-delay: 6s;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    .overlay {
+      padding: 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .auth-tabs {
+        .tab-button {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      .login-form {
+        max-width: 300px;
+
+        label {
+          input {
+            padding: 0.6rem;
+            font-size: 0.9rem;
+          }
+        }
+
+        .submit-button {
+          padding: 0.6rem;
+          font-size: 1rem;
+        }
+      }
+
+      .social-login {
+        .social-buttons {
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .social-button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+
+            img {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+
+      .alternate-link {
+        font-size: 0.9rem;
+      }
+    }
+
+    .floating-orbs {
+      .orb {
+        &.orb1,
+        &.orb2,
+        &.orb3,
+        &.orb4 {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
